@@ -1,0 +1,46 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; 
+SET AUTOCOMMIT = 0; 
+START TRANSACTION; 
+SET time_zone = "+00:00"; 
+CREATE DATABASE IF NOT EXISTS`mypads` 
+DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
+USE`mypads`; 
+
+DROP TABLE IF EXISTS`authors`; 
+CREATE TABLE IF NOT EXISTS`authors` ( 
+    `aut_id`varchar(50) NOT NULL, 
+    `aut_name`varchar(50) NOT NULL, 
+    `aut_email`varchar(50) NOT NULL, 
+    `aut_psw`varchar(10) NOT NULL, 
+    `aut_role`varchar(10) NOT NULL, 
+    PRIMARY KEY (`aut_id`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
+
+INSERT INTO`authors` (`aut_id`, `aut_name`, `aut_email`, `aut_psw`, `aut_role`) VALUES
+('a.titi', 'Titi', 'titi@gmail.com', 'utec', '0'), 
+('a.toto', 'Toto', 'toto@gmail.com', 'xxx', '0'), 
+('a.zk', 'Ziad', 'ziad.kachouh@gmail.com', 'utec', '1'); 
+
+DROP TABLE IF EXISTS`pads`; 
+CREATE TABLE IF NOT EXISTS`pads` ( 
+    `pad_id`varchar(50) NOT NULL, 
+    `pad_name`varchar(50) NOT NULL, PRIMARY KEY (`pad_id`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO`pads` (`pad_id`, `pad_name`) VALUES
+('essai1', 'essai1'), 
+('test1', 'test1'); 
+
+DROP TABLE IF EXISTS`pad_aut`; 
+CREATE TABLE IF NOT EXISTS`pad_aut` (
+    `pad_id`varchar(50) NOT NULL, 
+    `aut_id`varchar(50) NOT NULL, 
+    `aut_pad`int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
+
+INSERT INTO`pad_aut` (`pad_id`, `aut_id`, `aut_pad`) VALUES
+('essai1', 'a.toto', 1), 
+('essai1', 'a.zk', 0), 
+('test1', 'a.toto', 0), 
+('test1', 'a.zk', 1); 
+COMMIT; 

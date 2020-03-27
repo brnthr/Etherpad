@@ -1,0 +1,12 @@
+.simple-multi-select {
+  display: flex;
+
+  > * {
+    align-self: center;
+  }
+
+  .simple-multi-select-handler {
+    padding: 6px 10px;
+    margin: 0 10px;
+  }
+}
